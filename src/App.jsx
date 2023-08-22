@@ -1,25 +1,43 @@
- import React, { useState } from 'react'
-
  
- function App() {
-  const [task,setTask] = useState([])
+import React, { useState } from "react";
 
-  function handlechnage(e){
-    // e.preventDefaul()
-    setTask(e.target.value)
+function App() {
+  const [inptVal, setInptval] = useState("");
+  const [task, setTask] = useState([]);
 
+  function handleadd() {
+    setTask([...task, inptVal]);
+    setInptval("");
   }
-   return (
-     <div>
 
-      <input type="text"  placeholder="enter something"  onChange={handlechnage}  />
+  function handledlt(value,index)
+  {
+    
+  }
 
+    return (
+    <div>
+      <input
+        type="text"
+        placeholder="enter something"
+        value={inptVal}
+        onChange={(e) => setInptval(e.target.value)}
 
-    <p>
-      {task}
-    </p>
-     </div>
-   )
- }
- 
- export default App
+    
+      />
+
+      <button onClick={handleadd}>Add</button>
+      <button onClick={handledlt}> Delete</button>
+      
+      <ul>
+        <div>
+          {task.map((val) => {
+            return <li>{val}</li>;
+          })}
+        </div>
+      </ul>
+    </div>
+  );
+}
+
+export default App;
